@@ -2,6 +2,15 @@
 
 > **The most powerful, feature-rich, open-source portfolio builder on the web.**
 
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+
 Build a stunning, high-fidelity, fully responsive, and portable single-file portfolio website — zero servers, zero subscriptions, zero hosting required. Export a single `.html` file containing everything, ready to upload to Netlify, GitHub Pages, or any server.
 
 ---
@@ -40,18 +49,24 @@ PortfolioKraft offers an extensive collection of 34 distinct themes. Here is a h
 
 ---
 
-## 📦 Tech Stack
+## 📦 Tech Stack & Software Used
 
-PortfolioKraft is built with modern, ultra-lightweight React tools to ensure blazing-fast build times and seamless user interactions:
+PortfolioKraft is built with modern, ultra-lightweight React tools to ensure blazing-fast build times, high performance, and seamless user interactions.
 
-*   **Frontend Library**: React 18
-*   **Bundler & Dev Server**: Vite 5
-*   **Drag & Drop**: `@dnd-kit/core` + `@dnd-kit/sortable`
-*   **Markdown Processor**: `marked`
-*   **Icons**: `lucide-react`
-*   **Styling**: Premium custom Vanilla CSS
+### 🛠️ Builder Tooling (React App)
+| Core Framework | Build Tool | Drag & Drop | Icons | Markdown | Package Manager |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) | ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) | ![dnd-kit](https://img.shields.io/badge/dnd--kit-%23000000.svg?style=for-the-badge&logo=react&logoColor=white) | ![Lucide](https://img.shields.io/badge/Lucide%20Icons-000000?style=for-the-badge&logo=react&logoColor=white) | ![Marked](https://img.shields.io/badge/Marked.js-000000?style=for-the-badge&logo=markdown&logoColor=white) | ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) |
+| React 18 | Vite 5 | @dnd-kit/core | lucide-react | marked | npm |
 
-The exported `.html` template dynamically packages zero-configuration CDN scripts for `particles.js`, `vanilla-tilt.js`, `typed.js`, and `aos` so that the final file size remains tiny (~20KB) while delivering AAA-grade animations.
+### 🎨 Exported Portfolio Site Libraries
+The exported `.html` template packages zero-configuration CDN scripts so that the final exported file size remains tiny (~20KB) while delivering premium visual layouts and interactive components:
+
+| HTML5 Structure | CSS3 Styling | JavaScript Logic | Interactive Particles | 3D Card Tilt | Animated Titles | Scroll Reveal |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) | ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) | ![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black) | ![Particles.js](https://img.shields.io/badge/particles.js-%23e67e22.svg?style=for-the-badge&logo=javascript&logoColor=white) | ![Vanilla-Tilt.js](https://img.shields.io/badge/vanilla--tilt.js-%23f1c40f.svg?style=for-the-badge&logo=javascript&logoColor=white) | ![Typed.js](https://img.shields.io/badge/typed.js-black?style=for-the-badge) | ![AOS](https://img.shields.io/badge/AOS-%233498db.svg?style=for-the-badge&logo=css3&logoColor=white) |
+| Semantic Tags | Vanilla CSS | Pure ES6+ JS | Particles.js | Vanilla-Tilt.js | Typed.js | AOS |
+
 
 ---
 
