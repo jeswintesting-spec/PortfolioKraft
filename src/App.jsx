@@ -82,7 +82,7 @@ function App() {
       }
     ],
     socials: [
-      { id: '1', title: 'GitHub', url: 'https://github.com/jeswin-sunny' },
+      { id: '1', title: 'GitHub', url: 'https://github.com/jeswintesting-spec' },
       { id: '2', title: 'LinkedIn', url: 'https://linkedin.com' }
     ]
   });

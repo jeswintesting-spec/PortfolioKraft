@@ -77,8 +77,8 @@ Ensure you have [Node.js](https://nodejs.org/) installed, then follow these simp
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/portfoliokraft.git
-cd portfoliokraft
+git clone https://github.com/jeswintesting-spec/PortfolioKraft.git
+cd PortfolioKraft
 
 # 2. Install dependencies
 npm install
