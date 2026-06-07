@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Download, Plus, Wand2, Trash2, Save, Upload, BookOpen } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Download, Plus, Wand2, Trash2, Save, Upload, BookOpen, Sparkles } from 'lucide-react';
 import {
   DndContext,
   closestCenter,
@@ -17,79 +17,127 @@ import {
 import { SortableItem } from './components/SortableItem';
 import { Preview } from './components/Preview';
 import { UserManual } from './components/UserManual';
+import { WelcomeOverlay } from './components/WelcomeOverlay';
 import { themes, generateHTML } from './themes';
 
+const initialDemoData = {
+  settings: {
+    font: '',
+    bgColor: '',
+    accentColor: '',
+    customCss: '',
+    particles: false,
+    tilt: false,
+    typewriter: false,
+    aos: false,
+    scrollProgress: false,
+    devicons: false,
+    backToTop: false
+  },
+  contact: {
+    enabled: false,
+    formspreeId: ''
+  },
+  seo: {
+    title: '',
+    description: '',
+    ogImage: ''
+  },
+  profile: {
+    name: 'Essa Engineer',
+    title: 'Full Stack Systems Architect',
+    bio: 'Building Hyperscale Systems & Beautiful UIs. Passionate about performance, architecture, and design.',
+    avatar: ''
+  },
+  sections: {
+    skills: 'Skills & Technologies',
+    projects: 'Featured Projects',
+    experience: 'Experience',
+    achievements: 'Achievements'
+  },
+  skills: [
+    { id: '1', name: 'React' },
+    { id: '2', name: 'Node.js' },
+    { id: '3', name: 'Python' },
+    { id: '4', name: 'System Design' }
+  ],
+  experience: [
+    { id: '1', title: 'Senior Software Engineer', company: 'Tech Corp', duration: '2020 - Present', description: 'Led the development of a hyperscale microservices architecture.' },
+    { id: '2', title: 'Frontend Developer', company: 'Web Solutions', duration: '2018 - 2020', description: 'Built beautiful, responsive React applications for enterprise clients.' }
+  ],
+  projects: [
+    { id: '1', title: 'EssaMatch', description: 'AAA-scale multiplayer matchmaking system with advanced Elo mechanics.', url: 'https://github.com' },
+    { id: '2', title: 'EssaIDE', description: 'Enterprise-grade code editor with LSP and Git integration.', url: 'https://github.com' }
+  ],
+  achievements: [
+    { id: '1', title: 'Best Innovator Award 2023', description: 'Awarded for exceptional contributions to the open-source community.' }
+  ],
+  customSections: [
+    {
+      id: '1',
+      title: 'Education & Certifications',
+      items: [
+        { id: 'ext-1', title: 'B.S. in Computer Science', company: 'State University', duration: '2014 - 2018', description: 'Specialized in Software Engineering. Graduated with Honors.' }
+      ]
+    }
+  ],
+  socials: [
+    { id: '1', title: 'GitHub', url: 'https://github.com/jeswintesting-spec' },
+    { id: '2', title: 'LinkedIn', url: 'https://linkedin.com' }
+  ]
+};
+
+const emptyData = {
+  settings: {
+    font: '',
+    bgColor: '',
+    accentColor: '',
+    customCss: '',
+    particles: false,
+    tilt: false,
+    typewriter: false,
+    aos: false,
+    scrollProgress: false,
+    devicons: false,
+    backToTop: false
+  },
+  contact: {
+    enabled: false,
+    formspreeId: ''
+  },
+  seo: {
+    title: '',
+    description: '',
+    ogImage: ''
+  },
+  profile: {
+    name: '',
+    title: '',
+    bio: '',
+    avatar: ''
+  },
+  sections: {
+    skills: 'Skills & Technologies',
+    projects: 'Featured Projects',
+    experience: 'Experience',
+    achievements: 'Achievements'
+  },
+  skills: [],
+  experience: [],
+  projects: [],
+  achievements: [],
+  customSections: [],
+  socials: []
+};
+
 function App() {
-  const [data, setData] = useState({
-    settings: {
-      font: '',
-      bgColor: '',
-      accentColor: '',
-      customCss: '',
-      particles: false,
-      tilt: false,
-      typewriter: false,
-      aos: false,
-      scrollProgress: false,
-      devicons: false,
-      backToTop: false
-    },
-    contact: {
-      enabled: false,
-      formspreeId: ''
-    },
-    seo: {
-      title: '',
-      description: '',
-      ogImage: ''
-    },
-    profile: {
-      name: 'Essa Engineer',
-      title: 'Full Stack Systems Architect',
-      bio: 'Building Hyperscale Systems & Beautiful UIs. Passionate about performance, architecture, and design.',
-      avatar: ''
-    },
-    sections: {
-      skills: 'Skills & Technologies',
-      projects: 'Featured Projects',
-      experience: 'Experience',
-      achievements: 'Achievements'
-    },
-    skills: [
-      { id: '1', name: 'React' },
-      { id: '2', name: 'Node.js' },
-      { id: '3', name: 'Python' },
-      { id: '4', name: 'System Design' }
-    ],
-    experience: [
-      { id: '1', title: 'Senior Software Engineer', company: 'Tech Corp', duration: '2020 - Present', description: 'Led the development of a hyperscale microservices architecture.' },
-      { id: '2', title: 'Frontend Developer', company: 'Web Solutions', duration: '2018 - 2020', description: 'Built beautiful, responsive React applications for enterprise clients.' }
-    ],
-    projects: [
-      { id: '1', title: 'EssaMatch', description: 'AAA-scale multiplayer matchmaking system with advanced Elo mechanics.', url: 'https://github.com' },
-      { id: '2', title: 'EssaIDE', description: 'Enterprise-grade code editor with LSP and Git integration.', url: 'https://github.com' }
-    ],
-    achievements: [
-      { id: '1', title: 'Best Innovator Award 2023', description: 'Awarded for exceptional contributions to the open-source community.' }
-    ],
-    customSections: [
-      {
-        id: '1',
-        title: 'Education & Certifications',
-        items: [
-          { id: 'ext-1', title: 'B.S. in Computer Science', company: 'State University', duration: '2014 - 2018', description: 'Specialized in Software Engineering. Graduated with Honors.' }
-        ]
-      }
-    ],
-    socials: [
-      { id: '1', title: 'GitHub', url: 'https://github.com/jeswintesting-spec' },
-      { id: '2', title: 'LinkedIn', url: 'https://linkedin.com' }
-    ]
-  });
-  
+  const [data, setData] = useState(initialDemoData);
   const [themeId, setThemeId] = useState('glassmorphism');
   const [searchQuery, setSearchQuery] = useState('');
   const [showManual, setShowManual] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(() => !localStorage.getItem('portfoliokraft_skip_welcome'));
+  
+  const fileInputRef = useRef(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -424,6 +472,14 @@ function App() {
 
   return (
     <div className="app-container">
+      {showWelcome && (
+        <WelcomeOverlay
+          onClose={() => setShowWelcome(false)}
+          onLoadDemo={() => setData(initialDemoData)}
+          onClearFresh={() => setData(emptyData)}
+          onImportClick={() => fileInputRef.current?.click()}
+        />
+      )}
       {showManual && <UserManual onClose={() => setShowManual(false)} />}
       <nav className="navbar">
         <div className="logo">
@@ -431,6 +487,10 @@ function App() {
           PortfolioKraft
         </div>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <button className="btn btn-outline" onClick={() => setShowWelcome(true)} style={{ gap: '8px' }}>
+            <Sparkles size={18} color="#fbbf24" />
+            Quick Tour
+          </button>
           <button className="btn btn-outline" onClick={() => setShowManual(true)} style={{ gap: '8px' }}>
             <BookOpen size={18} />
             User Manual
@@ -438,7 +498,7 @@ function App() {
           <label className="btn btn-outline" style={{ cursor: 'pointer', margin: 0 }}>
             <Upload size={18} />
             Import Config
-            <input type="file" accept=".json" style={{ display: 'none' }} onChange={importData} />
+            <input ref={fileInputRef} type="file" accept=".json" style={{ display: 'none' }} onChange={importData} />
           </label>
           <button className="btn btn-outline" onClick={exportData}>
             <Save size={18} />
